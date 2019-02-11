@@ -15,8 +15,8 @@
 * https://www.notion.so/
 * https://slack.com
 #### Base de données 
-* Adresse : mongodb://localhost:27017
-* Nom de la base :
+* Adresse : localhost
+* Nom de la base : projet1
 ## Modifications
 ##### Travail sur le style
 * Se placer dans la racine du projet
