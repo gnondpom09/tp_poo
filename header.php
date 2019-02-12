@@ -25,6 +25,9 @@
                         <li>
                             <a href="<?= $this->getUrl('insert') ?>">Formulaire</a>
                         </li>
+                        <li>
+                            <a href="<?= $this->getUrl('test') ?>">test</a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -1,40 +1,45 @@
 <?php
 class model {
-    // Properties
-    const FILE = "tmp/store_data.txt";
-    
-    function storeData($values) {
-        if ($fp = @fopen(self::FILE, 'w')) {
-            foreach($values as $key => $val) {
-                fputs($fp, sprintf("%s=>%s\n", $key, $val));
-            }
-            fclose($fp);
-        } else {
-            throw new Exception("Impossible d'ouvrir en écriture " . self::FILE);
-        }
+    // Identifiers
+    private $host = 'localhost';
+    private $dbName = 'multimedia';
+    private $user = 'root';
+    private $password = 'root';
+
+    /**
+     * Get Connection to bdd
+     *
+     * @return void
+     */
+    function getBdd() {
+        // Connection to database
+        $db = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password);
+        return $bdd;
     }
-    
+
+    // Exemple de requette read
     function readData() {
-        if (is_readable(self::FILE)) {
-            foreach(file(self::FILE) as $line) {
-                list($key, $val) = explode('=>', trim($line));
-                $values[$key] = $val;
-                }
-            } else {
-            $values = [];
-        }
-        return $values;
+        // Get connection
+        $bdd = getBdd();
+        // Read datas
+        $billets = $bdd->query('select BIL_ID as id, BIL_DATE as date,'
+            . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
+            . ' order by BIL_ID desc');
+        return $billets;
     }
     
     function addData($values) {
-        $all_values = array_merge($this->readData(), $values);
-        $this->storeData($all_values);
+        // requette insert
+    }
+
+    function updateData($id) {
+        // requette update
     }
     
-    function dropData() {
-        if(!@unlink(self::FILE)) {
-            throw new Exception("Impossible de détruire " . self::FILE);
-        }
+    function dropData($id) {
+        // requette delete
     }
+
+    
  
 }
