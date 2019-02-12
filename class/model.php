@@ -13,19 +13,34 @@ class model {
      */
     function getBdd() {
         // Connection to database
-        $db = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password);
+        $db = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password, 
+            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         return $bdd;
     }
 
-    // Exemple de requette read
+    // Exemple de requette read pour afficher tous les médias
     function readData() {
         // Get connection
         $bdd = getBdd();
         // Read datas
-        $billets = $bdd->query('select BIL_ID as id, BIL_DATE as date,'
-            . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-            . ' order by BIL_ID desc');
-        return $billets;
+        $datas = $bdd->query('SELECT * FROM datas');
+        return $datas;
+    }
+
+    // Exemple requette pour afficher un titre
+    function getData($idData) {
+        // Get connection
+        $bdd = getBdd();
+        // execute query
+        $billet = $bdd->prepare('SELECT titre where id=?');
+        $billet->execute(array($idData));
+
+        // Accès à la première ligne de résultat
+        if ($billet->rowCount() == 1) {
+            return $billet->fetch(); 
+        } else {
+            throw new Exception("Aucun média ne correspond à l'identifiant '$idData'");
+        }
     }
     
     function addData($values) {
@@ -35,9 +50,13 @@ class model {
     function updateData($id) {
         // requette update
     }
-    
-    function dropData($id) {
+
+    function deleteData($id) {
         // requette delete
+    }
+    
+    function dropData() {
+
     }
 
     

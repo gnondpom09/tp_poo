@@ -1,48 +1,93 @@
 <?php
 class SessionSingleton {
     /**
-     *    Returns an instance of the singleton class.
-     *    @return    object        The singleton instance
+     * Array holding values gathered from $_SESSION.
+     *
+     * @var array
      */
-    public static function _instance()
+    protected $arrValues;
+    /**
+     * Singleton placeholder.
+     *
+     * @var SessionSingleton
+     */
+    protected static $instance;
+    /**
+     * Class constructor.
+     *
+     * Marked as protected so this constructor cant be called from outside. If
+     * someone tries to instantiate "new SessionSingleton()" PHP will throw
+     * "PHP Fatal error:  Call to protected SessionSingleton::__construct() from invalid context in .."
+     *
+     */
+    protected function __construct()
     {
-        // Start a session if not already started
-        Session::start();
-
-        if ( false == isset( $_SESSION[ self::$_singleton_class ] ) )
-        {
-            $class = self::$_singleton_class;
-            $_SESSION[ self::$_singleton_class ] = new $class;
+        $this->arrValues = $_SESSION;
+    }
+    /**
+     * Singleton instance method.
+     *
+     * Supports lazy loading so instance will ge generated only if needed. Also
+     * prohibits mutliple instances of object.
+     *
+     * @static
+     *
+     * @return SessionSingleton
+     */
+    public static function getInstance()
+    {
+        if (static::$instance === null) {
+            static::$instance = new static();
         }
-
-        return $_SESSION[ self::$_singleton_class ];       
+        return static::$instance;
     }
-
     /**
-     *    Destroy the singleton object. Deleting the session variable in the
-     *    destructor does not make sense since the destructor is called every
-     *    time the script ends.
+     * Method for getting property value from current session.
+     *
+     * It will return all values if $propertyName is set to null, but if property
+     * defined but does not exist it will return null.
+     *
+     * @param string $propertyName
+     *
+     * @return mixed
      */
-    public static function _destroy()
+    public function get($propertyName = null)
     {
-        $_SESSION[ self::$_singleton_class ] = null;
+        if ($propertyName === null) {
+            return $this->arrValues;
+        }
+        if (array_key_exists($propertyName, $this->arrValues)) {
+            return $this->arrValues[$propertyName];
+        }
+        return null;
     }
-
     /**
-     *    Initialize the singleton object. Use instead of constructor.
+     * Method for setting property and value to current session.
+     *
+     * @param string $propertyName
+     * @param mixed  $propertyValue
+     *
+     * @return boolean
      */
-    public function _initialize( $name )
+    public function set($propertyName, $propertyValue)
     {
-        // Something...
+        $this->arrValues[$propertyName] = $propertyValue;
+        return true;
     }
-
     /**
-     *    Prevent cloning of singleton.
+     * Method for adding new property and value to current session if not exists.
+     *
+     * @param string $propertyName
+     * @param mixed  $propertyValue
+     *
+     * @return boolean
      */
-    private function __clone()
+    public function add($propertyName, $propertyValue)
     {
-        trigger_error( "Cloning a singleton object is not allowed.", E_USER_ERROR );
+        if (array_key_exists($propertyName, $this->arrValues)) {
+            return false;
+        }
+        $this->arrValues[$propertyName] = $propertyValue;
+        return true;
     }
-
-    private static $_singleton_class = __CLASS__;
 }
