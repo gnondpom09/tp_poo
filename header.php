@@ -19,5 +19,6 @@
             <ul class="subnav-hero-subnav">
                 <li><a href="<?= $this->getUrl('index') ?>">Accueil</a></li>
                 <li><a href="<?= $this->getUrl('connexion') ?>">Connexion</a></li>
+                <li><a href="<?= $this->getUrl('upload') ?>">Upload</a></li>
             </ul>
         </header>

@@ -1,10 +1,5 @@
 <?php
 class Model {
-    // Identifiers
-    private $host = 'localhost';
-    private $dbName = 'multimedia';
-    private $user = 'root';
-    private $password = 'root';
 
     /**
      * Get Connection to bdd
@@ -12,8 +7,12 @@ class Model {
      * @return void
      */
     function getBdd() {
-        // Connection to database
-        // $db = new PDO('mysql:host=' . $this.$host . ';dbname=' . $this.$dbName, $this.$user, $this.$password, 
+        // $host = '127.0.0.1';
+        // $dbName = 'multimedia';
+        // $user = 'root';
+        // $password = 'root';
+        // // Connection to database
+        // $db = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password, 
         //     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         // return $db;
     }
@@ -23,7 +22,8 @@ class Model {
         // // Get connection
         // $bdd = self::getBdd();
         // // Read datas
-        // $datas = $bdd->query('SELECT * FROM datas');
+        // $datas = $bdd->prepare("SELECT * FROM datas");
+        // $datas->execute();
         // return $datas;
     }
 
@@ -32,7 +32,7 @@ class Model {
         // Get connection
         $bdd = getBdd();
         // execute query
-        $billet = $bdd->prepare('SELECT titre where id=?');
+        $billet = $bdd->prepare('SELECT path where id=?');
         $billet->execute(array($idData));
 
         // Accès à la première ligne de résultat
