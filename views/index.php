@@ -1,6 +1,6 @@
 
 <div class="container">
-    <div class="grid-1 callout ">
+    <div class="grid-1 callout colums-small-6">
         <form class="callout text-center">
             <div class="floated-label-wrapper">
                 <label for="full-name">Auteur</label>
@@ -18,8 +18,8 @@
         </form>
     </div>
 
-    <div class="grid-2 callout">
-    Square 2
+    <div class="grid-2 callout colums-small-6">
+    Affichage du média
     </div>
 
 </div>

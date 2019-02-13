@@ -1,7 +1,6 @@
 <!-- formulaire de login -->
 
-<div class="container">
-    <div class="grid-1 callout ">
+
         <form class="callout text-center">
          <div class="floated-label-wrapper">
              <label for="full-name">Login</label>
@@ -13,5 +12,3 @@
          </div>
             <input class="button expanded" type="submit" value="Valider">
         </form>
-    </div>
-</div>
