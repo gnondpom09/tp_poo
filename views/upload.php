@@ -10,5 +10,5 @@
             <label for="description">Description</label>
              <input type="text" id="description" name="description" placeholder="Description">
          </div>
-            <input class="button expanded" type="submit" value="Ajouter">
+            <input class="button expanded" type="submit" value="Ajouter" name="ajouter">
         </form>
