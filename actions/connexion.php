@@ -1,5 +1,5 @@
 <?php
-class TestAction extends Action {
+class ConnexionAction extends Action {
 
     /**
      * Copier cette méthode
@@ -14,7 +14,7 @@ class TestAction extends Action {
         // code...
         
         // Display content of home page
-        $this->render(dirname(dirname(__FILE__)) . '/views/test.php'); // modifier la page à afficher
+        $this->render(dirname(dirname(__FILE__)) . '/views/connexion.php'); // modifier la page à afficher
         $this->printOut();
     }
 }
