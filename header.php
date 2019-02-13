@@ -14,21 +14,10 @@
 <body>
     <div class="wrapper">
 
-        <header class="site-header">
-            <div class="top-bar" id="menu-primary">
-                <a href="<?= $this->getUrl('index') ?>" class="logo">LDNR</a>
-                <div class="top-bar-right">
-                    <ul class="dropdown menu">
-                        <li>
-                            <a href="<?= $this->getUrl('index') ?>">Accueil</a>
-                        </li>
-                        <li>
-                            <a href="<?= $this->getUrl('insert') ?>">Formulaire</a>
-                        </li>
-                        <li>
-                            <a href="<?= $this->getUrl('test') ?>">test</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <header class="subnav-hero-section site-header">
+            <h1 class="subnav-hero-headline">MULTIMEDIA</h1>
+            <ul class="subnav-hero-subnav">
+                <li><a href="<?= $this->getUrl('index') ?>">Accueil</a></li>
+                <li><a href="<?= $this->getUrl('connexion') ?>">Connexion</a></li>
+            </ul>
         </header>
