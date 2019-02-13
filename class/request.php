@@ -1,5 +1,5 @@
 <?php
-class Request implements RequestInterface  {
+class Request implements InterfaceRequest  {
 
     public function getParam(string $key): string {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST[$key])){

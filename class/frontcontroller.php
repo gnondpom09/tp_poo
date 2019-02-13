@@ -1,6 +1,5 @@
 <?php
-class DefaultController {
-    // Properties
+class FrontController {
     protected $_defaults = ['action' => 'index'];
     protected $_request;
     protected $_response;
@@ -14,7 +13,7 @@ class DefaultController {
     
     public static function getInstance() {
         if (is_null(self::$_instance)){
-            self::$_instance = new self();
+        self::$_instance = new self();
         }
         return self::$_instance;
     }
@@ -38,7 +37,7 @@ class DefaultController {
     // par convention le _ en préfixe indique un méthode privée
     private function _getCommand($action) {
         if(!file_exists($path = "actions/$action.php")) {
-            throw new Exception("Commande inconnue actions/$action.php");
+        throw new Exception("Commande inconnue actions/$action.php");
         }
         require($path);
         $class = $action.'Action';
