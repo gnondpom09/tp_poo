@@ -9,6 +9,8 @@
     <!-- app -->
     <script src="js/anime.min.js"></script>
     <script src="js/script.js"></script>
-<p> modification test </p>
+<footer>
+        <p>Créer par : Laurent, Florent, Yasmine et Sandra</p> 
+</footer>
 </body>
 </html>

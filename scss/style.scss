@@ -10,6 +10,14 @@ $subnav-hero-link-opacity: 0.15;
 $subnav-hero-height: 300px;
 $subnav-hero-transition: all 0.35s ease-in-out;
 
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-content: space-between;
+  align-items: center;
+}
+
 .subnav-hero-section {
   text-align: center;
   background: $subnav-hero-bg;
@@ -17,6 +25,7 @@ $subnav-hero-transition: all 0.35s ease-in-out;
   position: relative;
   overflow: visible;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   height: $subnav-hero-height;
@@ -105,4 +114,12 @@ $subnav-hero-transition: all 0.35s ease-in-out;
     margin: 0;
   }
   
- 
+ footer {
+   margin-top: 48px;
+   padding : 20px;
+   background-color: $primary-color;
+   color: $white;
+   display: block;
+   width: 100%;
+   text-align: center;
+ }
