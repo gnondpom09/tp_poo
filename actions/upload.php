@@ -34,7 +34,7 @@
                         //check file size 5MB
                         if ($size < 5000000) {
                             //move upload file temperory directory to your upload folder
-                            if ($mime == 'image/jpeg' || $mime == 'image/png') {
+                            if ($mime == 'image/jpg' || $mime == 'image/jpeg' || $mime == 'image/png') {
                                 //Its a doc format do something
                                 move_uploaded_file($temp, "multimedia/images/" . $image_file);
                             } else if ($mime == 'video/webm') {
@@ -42,20 +42,18 @@
                             } else if ($mime == 'audio/mpeg') {
                                 move_uploaded_file($temp, "multimedia/audio/" . $image_file);
                             }
-                            if(isset($_POST['ajouter'])){
-                                
-                                if(isset($_POST['description'])) {
+                            if (isset($_POST['ajouter'])) {
+                                // Check if description is not empty
+                                if (isset($_POST['description'])) {
+                                    // push properties of file in array
                                     $description = htmlspecialchar($_POST['description']);
-                                     // TODO : insérer le chemin du fichier, le type et la description dans un tableau 
-                                    // et appeler la méthode addData() de la classe UploadAction avec le tableau en paramètre
                                     $date = new Date();
                                     $values = [$path, $type, $description, 'toto', $date];
-                                    
-                                    $new_val = $request->getParam('inserted');
-                                    $model->addData(array($new_val));
-                                    $response->addVar('inserted', $new_val);
+   
+                                    $model->addData(array($values));
+                                    $response->addVar('fichier', $values);
 
-                                    echo"Requête réussie";
+                                    echo "Requête réussie";
                                 } else {
                                     echo "Veuillez remplir la description";
                                 }
@@ -77,7 +75,7 @@
               
             
             // Display content of home page
-            $this->render(dirname(dirname(__FILE__)) . '/views/upload.php'); // modifier la page à afficher
+            $this->render(dirname(dirname(__FILE__)) . '/views/upload.php');
             $this->printOut();
         }
     }

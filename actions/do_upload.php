@@ -1,5 +1,5 @@
 <?php
-class do_insertAction extends Action {
+class do_uploadAction extends Action {
     
     /**
      * Push new datas and display results
@@ -13,13 +13,10 @@ class do_insertAction extends Action {
         // Push new datas
         $new_val = $request->getParam('fichier');
         $model->addData(array($new_val));
-
         $response->addVar('fichier', $new_val);
 
-        echo $values;
-
         // Display values
-        $this->render(dirname(dirname(__FILE__)) . '/views/do_insert.php');
+        $this->render(dirname(dirname(__FILE__)) . '/views/do_upload.php');
         $this->printOut();
     }
 }

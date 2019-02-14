@@ -20,11 +20,11 @@ class Model {
     // Exemple de requette read pour afficher tous les médias
     function readData() {
         // // Get connection
-        // $bdd = self::getBdd();
-        // // Read datas
-        // $datas = $bdd->prepare("SELECT * FROM datas");
-        // $datas->execute();
-        // return $datas;
+        $bdd = self::getBdd();
+        // Read datas
+        $datas = $bdd->prepare("SELECT * FROM datas");
+        $datas->execute();
+        return $datas;
     }
 
     // Exemple requette pour afficher un titre
@@ -56,7 +56,7 @@ class Model {
         if ($billet->rowCount() == 1) {
             return $billet->fetch(); 
         } else {
-            throw new Exception("Aucun média ....... ".$values);
+            throw new Exception("Aucun média ....... " . $values);
         }
     }
 

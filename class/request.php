@@ -2,7 +2,7 @@
 class Request implements InterfaceRequest  {
 
     public function getParam(string $key): string {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST[$key])){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST[$key])) {
             return $_POST[$key];
         } elseif (isset($_GET[$key])) {
             return $_GET[$key];

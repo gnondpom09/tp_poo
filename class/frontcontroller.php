@@ -36,8 +36,8 @@ class FrontController {
     
     // par convention le _ en préfixe indique un méthode privée
     private function _getCommand($action) {
-        if(!file_exists($path = "actions/$action.php")) {
-        throw new Exception("Commande inconnue actions/$action.php");
+        if (!file_exists($path = "actions/$action.php")) {
+            throw new Exception ("Commande inconnue actions/$action.php");
         }
         require($path);
         $class = $action.'Action';

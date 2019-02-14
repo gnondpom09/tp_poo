@@ -1,31 +1,11 @@
-
-
-<form method="post" action="#">
-    <fieldset>
-        <legend>Valeur à ajouter</legend>
-        <input type="hidden" name="action" value="do_insert"/>
-        <input type="text" name="inserted"/>
-        <input type="submit" name="envoyer"/>
-    </fieldset>
-</form>
-
-<ul>
-<?php
-if ($values && count($values) > 0) :
-
-    foreach($values as $key => $val) :
-    ?>
-        <li>
-            <?= $key . " : " . $val ?>
-        </li>
-        <a href="<?= $this->getUrl('delete') ?>">Destruction des valeurs actuelles</a>
-    <?php
-    endforeach;
-    else :
-    ?>
-        <p>Aucun résultats</p>
-    <?php
-endif;
-?>
-</ul>
-
+    <form class="callout text-center" enctype="multipart/form-data" action="#">
+        <div class="floated-label-wrapper">
+            <label for="Fichier">Fichier</label>
+            <input type="file" id="fichier" name="fichier" placeholder="Fichier">
+        </div>
+        <div class="floated-label-wrapper">
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" placeholder="Description">
+        </div>
+        <input class="button expanded" type="submit" value="Ajouter" name="ajouter">
+    </form>
