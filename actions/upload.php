@@ -36,11 +36,11 @@
                             //move upload file temperory directory to your upload folder
                             if ($mime == 'image/jpeg' || $mime == 'image/png') {
                                 //Its a doc format do something
-                                move_uploaded_file($temp, "mulimedia/images/" . $image_file);
+                                move_uploaded_file($temp, "multimedia/images/" . $image_file);
                             } else if ($mime == 'video/webm') {
-                                move_uploaded_file($temp, "mulimedia/videos/" . $image_file);
+                                move_uploaded_file($temp, "multimedia/videos/" . $image_file);
                             } else if ($mime == 'audio/mpeg') {
-                                move_uploaded_file($temp, "mulimedia/audio/" . $image_file);
+                                move_uploaded_file($temp, "multimedia/audio/" . $image_file);
                             }
                             // TODO : insérer le chemin du fichier, le type et la description dans un tableau 
                             // et appeler la méthode addData() de la classe UploadAction avec le tableau en paramètre
