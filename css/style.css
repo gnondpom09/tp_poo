@@ -67,7 +67,7 @@
 @media screen and (max-width: 60em) {
   .container {
     grid-template-rows: repeat(4, 1fr);
-    margin-top: 300px;
+    margin-top: 0px;
   }
 }
 
@@ -119,13 +119,18 @@ footer {
 /******************************************************************************/
 /************************************** RESPONSIVE ****************************/
 /******************************************************************************/
-@media only screen and (max-width: 1080px) and (orientation: portrait) {
+@media only screen and (min-width: 1024px) and (orientation: portrait) {
   form {
     width: 100% !important;
   }
 
   .container {
     margin-top: 100px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .container {
+    margin-top: 0px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -136,10 +141,6 @@ footer {
 
   .subnav-hero-subnav {
     visibility: hidden;
-  }
-
-  .container {
-    margin-top: 85px;
   }
 
   .grid-1 {

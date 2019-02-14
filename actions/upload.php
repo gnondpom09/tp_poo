@@ -42,9 +42,25 @@
                             } else if ($mime == 'audio/mpeg') {
                                 move_uploaded_file($temp, "multimedia/audio/" . $image_file);
                             }
-                            // TODO : insérer le chemin du fichier, le type et la description dans un tableau 
-                            // et appeler la méthode addData() de la classe UploadAction avec le tableau en paramètre
-                            // Code...
+                            if(isset($_POST['ajouter'])){
+                                
+                                if(isset($_POST['description'])) {
+                                    $description = htmlspecialchar($_POST['description']);
+                                     // TODO : insérer le chemin du fichier, le type et la description dans un tableau 
+                                    // et appeler la méthode addData() de la classe UploadAction avec le tableau en paramètre
+                                    $date = new Date();
+                                    $values = [$path, $type, $description, 'toto', $date];
+                                    
+                                    $new_val = $request->getParam('inserted');
+                                    $model->addData(array($new_val));
+                                    $response->addVar('inserted', $new_val);
+
+                                    echo"Requête réussie";
+                                } else {
+                                    echo "Veuillez remplir la description";
+                                }
+                            }
+                            
                         } else {
                             //error message file size not large than 5MB
                             echo "Your File To large Please Upload 5MB Size";
@@ -57,7 +73,8 @@
                     echo "Please Select Image";
                 }
                 finfo_close($finfo);
-            }    
+            }
+              
             
             // Display content of home page
             $this->render(dirname(dirname(__FILE__)) . '/views/upload.php'); // modifier la page à afficher
