@@ -3,17 +3,17 @@
 require('header.php');
 ?>
 
-<form action='uploading.php' class="callout text-center" enctype="multipart/form-data">
+<form action='uploading.php' method= 'post' class="callout text-center" enctype="multipart/form-data">
          <div class="floated-label-wrapper">
              <label for="Fichier">Fichier</label>
-            <input type="file" id="fichier" name="fichier" placeholder="Fichier">
+            <input type="file" name="fichier" value="fichier" placeholder="Fichier">
          </div>
          <div class="floated-label-wrapper">
             <label for="description">Description</label>
-             <input type="text" id="description" name="description" placeholder="Description">
+             <input type="text"  name="description" placeholder="Description">
          </div>
-            <input class="button expanded" type="submit" value="Ajouter" name="ajouter">
-</form>';
+            <input class="button expanded" type="submit" value="ajouter" name="ajouter">
+</form>
 <?php
         require('footer.php');
 ?>
