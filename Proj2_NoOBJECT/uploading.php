@@ -5,11 +5,11 @@ require('upload.php');
 if (isset($_POST['ajouter'])) {
     
     $loaded_file = $_FILES["fichier"]["name"]; //Nom du fichier sélectionné
-    echo $loaded_file;
+    //echo $loaded_file;
     $type  = $_FILES["fichier"]["type"]; //Type du fichier sélectionné
-    echo  "<br/>".$type;
+    //echo  "<br/>".$type;
     $size  = $_FILES["fichier"]["size"]; //Taille du fichier
-    echo  "<br/>".$size;
+    //echo  "<br/>".$size;
     $error = $_FILES["fichier"]["error"];  //Le code d'erreur, qui permet de savoir si le fichier a bien été uploadé.
     $temp  = $_FILES["fichier"]["tmp_name"];
     //Les extensions acceptées pour les images
@@ -26,13 +26,15 @@ if (isset($_POST['ajouter'])) {
     //Sélection du répertoire correspondant au type de fichier sélectionné
 
     if (in_array($extension, $extensions_valides_img)) { // si image
-        $path = './multimedia/images';
+        $path = 'multimedia/images/'. $loaded_file;
+        echo $path;
     } elseif (in_array($extension, $extensions_valides_audio)) { //si audio
-        $path = './multimedia/audio';
+        $path = 'multimedia/audio/'. $loaded_file;
     } elseif (in_array($extension, $extensions_valides_video)) { //si video
-        $path = './multimedia/videos';
+        $path = 'multimedia/videos/'. $loaded_file;
     }
     //déplacement du fichier dans le répertoire correspondant à son type
-    //$uploaded = move_uploaded_file($_FILES['fichier']['tmp_name'], $path);
-    $uploaded = move_uploaded_file($loaded_file, $path);
+    move_uploaded_file($temp, $path);
+    move_uploaded_file($loaded_file, $path);
+    echo "upload ok";
 }

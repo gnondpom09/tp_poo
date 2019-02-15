@@ -1,7 +1,7 @@
 <!-- formulaire de  -->
 
 
-        <form class="callout text-center" enctype="multipart/form-data" action="#">
+        <form class="callout text-center" method='post' enctype="multipart/form-data" action="#">
             <div class="floated-label-wrapper">
                 <label for="Fichier">Fichier</label>
                 <input type="file" id="fichier" name="fichier" placeholder="Fichier">
