@@ -14,6 +14,7 @@ require('header.php');
          </div>
             <input class="button expanded" type="submit" value="ajouter" name="ajouter">
 </form>
+<div class="floated-label-wrapper"> </div>
 <?php
         require('footer.php');
 ?>
