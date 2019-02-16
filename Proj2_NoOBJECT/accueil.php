@@ -14,7 +14,7 @@ require('header.php');
             </div>
             <div class="floated-label-wrapper">
                 <label for="pass">Description</label>
-                <input type="text"  name="description" placeholder="Description">
+                <input type="text"  name="description" placeholder="Description" required>
             </div>
             <input class="button expanded" type="submit" value="Valider">
         </form>
@@ -24,7 +24,7 @@ require('header.php');
     Affichage du média
     </div>
 
-</div>';
+</div>
 <?php
 require('footer.php');
 ?>
