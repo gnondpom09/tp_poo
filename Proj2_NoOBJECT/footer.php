@@ -10,7 +10,7 @@
     <script src="js/anime.min.js"></script>
     <script src="js/script.js"></script>
 <footer>
-        <p>Créé par : Laurent, Florent, Yasmine et Sandra</p> 
+        <p>LDNR 2019 - Créé par: Sandra, Yasmine, Florent et Laurent </p> 
 </footer>
 </body>
 </html>

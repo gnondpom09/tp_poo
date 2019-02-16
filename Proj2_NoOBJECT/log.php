@@ -1,5 +1,8 @@
 <?php
+session_start();
 // On définit un login et un mot de passe de base pour tester notre exemple. Cependant, vous pouvez très bien interroger votre base de données afin de savoir si le visiteur qui se connecte est bien membre de votre site
+//require('recuperationId.php');
+
 $login_valide = "moi";
 $pwd_valide = "lemien";
 
@@ -15,6 +18,7 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 		$_SESSION['pwd'] = $_POST['pwd'];
 
 		// on redirige notre visiteur vers une page de notre section membre
+
 		header ('location: upload.php');
 	}
 	else {
@@ -25,5 +29,5 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 	}
 }
 else {
-	echo 'Les variables du formulaire ne sont pas déclarées.';
+	echo 'Veuillez saisir votre login et mot de passe';
 }
