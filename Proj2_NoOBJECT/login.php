@@ -2,12 +2,12 @@
 //session_start ();
 require('header.php');
 ?>
-//formulaire de login 
+<!-- formulaire de login  -->
 <div class="container">
     <div class="grid-1 callout ">
         <form class="callout text-center" action="log.php" method="post">
          <div class="floated-label-wrapper">
-             <label for="login">Login</label> <!-- correspond à nom dans la bdd -->
+             <label for="login">Login</label> <!-- correspond à 'nom' dans la bdd -->
             <input type="text"  name="login" placeholder="Login">
          </div>
          <div class="floated-label-wrapper">

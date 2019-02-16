@@ -1,6 +1,5 @@
 <?php
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +25,8 @@
                 <li><a href='upload.php'>Upload</a></li>
             </ul>
             <form action="deconnexion.php" method="post">
+            <div class="grid-2 colums-small-6 "> 
             <input class="button" type="submit" value="Deconnexion">
+            </div>
             </form>
         </header>

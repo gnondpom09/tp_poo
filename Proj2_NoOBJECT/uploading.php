@@ -36,10 +36,13 @@ if (isset($_POST['ajouter'])) { //si login OK et fichier sélectionné
     $uploaded = move_uploaded_file($temp, $path);
     $uploaded = move_uploaded_file($loaded_file, $path);
     $description=htmlspecialchars($_POST["description"]);
+    echo $description;
     $date = date("F j, Y, g:i a"); //date de upload
+    echo $date;
     //Requete qui récupère l'identifiant $id correspondant au login/nom dans la bdd pour renseigner la clé étrangère auteur_id
     $id = $bdd->exec('SELECT users.id FROM users,datas where users.id=datas.auteur_id and users.nom="nom1"');
+    echo $id;
     //Requete pour insérer dans la base de données les renseignements du fichier uploadé
-    $bdd->exec('INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date) VALUES ($path,$type,$description,$id,$date)');
-    echo 'le fichier est bien chargé dans la bdd';
+    // $bdd->exec('INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date) VALUES ($path,$type,$description,$id,$date)');
+    // echo 'le fichier est bien chargé dans la bdd';
 }
