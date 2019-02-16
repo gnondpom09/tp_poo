@@ -1,15 +1,10 @@
 <?php
 require('upload.php');
-//echo $_POST['Ajouter'];
 
 if (isset($_POST['ajouter'])) {
-    
     $loaded_file = $_FILES["fichier"]["name"]; //Nom du fichier sélectionné
-    //echo $loaded_file;
     $type  = $_FILES["fichier"]["type"]; //Type du fichier sélectionné
-    //echo  "<br/>".$type;
     $size  = $_FILES["fichier"]["size"]; //Taille du fichier
-    //echo  "<br/>".$size;
     $error = $_FILES["fichier"]["error"];  //Le code d'erreur, qui permet de savoir si le fichier a bien été uploadé.
     $temp  = $_FILES["fichier"]["tmp_name"];
     //Les extensions acceptées pour les images
@@ -27,7 +22,6 @@ if (isset($_POST['ajouter'])) {
 
     if (in_array($extension, $extensions_valides_img)) { // si image
         $path = 'multimedia/images/'. $loaded_file;
-        echo $path;
     } elseif (in_array($extension, $extensions_valides_audio)) { //si audio
         $path = 'multimedia/audio/'. $loaded_file;
     } elseif (in_array($extension, $extensions_valides_video)) { //si video
@@ -36,5 +30,10 @@ if (isset($_POST['ajouter'])) {
     //déplacement du fichier dans le répertoire correspondant à son type
     move_uploaded_file($temp, $path);
     move_uploaded_file($loaded_file, $path);
-    echo "upload ok";
+    print("<div><br/> upload ok  </div>");
+    
 }
+
+//"INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date) VALUES (?,?,?,?,?)"
+//INSERT INTO `users` (`id`, `nom`, `password`) VALUES ('1', 'nom1', 'passnom1'), ('2', 'nom2', 'passnom2');
+//INSERT INTO `datas` (`id`, `chemin_relatif`, `mime_type`, `description`, `auteur_id`, `date`) VALUES ('1', '/application/multimedia/audio', 'image/jpeg', 'carottes', '2', '2019-02-06'), ('2', '/application/multimedia/audio', 'video/webm', 'une video de quelque chose', '1', '2019-02-17');
