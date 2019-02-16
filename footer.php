@@ -1,20 +1,18 @@
-<footer>
-            <p class="footweb">Créer par : Laurent, Florent, Yasmine et Sandra</p> 
+            <footer>
+                <p class="footweb">Créer par : Laurent, Florent, Yasmine et Sandra</p> 
 
-            <div class="mobile-bottom-bar">
-                <a href="<?= $this->getUrl('index') ?>" class="footer-link">
-                <i class="fa fa-home"></i> <span class='footer-text'>Accueil</span>
-                </a>
-                <a href="<?= $this->getUrl('connexion') ?>" class="footer-link">
-                <i class="fa fa-connectdevelop"></i> <span class='footer-text'>Connexion</span>
-                </a>
-                <a href="<?= $this->getUrl('upload') ?>" class="footer-link">
-                <i class="fa fa-file-upload"></i> <span class='footer-text'>Upload</span>
-                </a>
-            </div>
-            
-
-    </footer>
+                <div class="mobile-bottom-bar">
+                    <a href="<?= $this->getUrl('index') ?>" class="footer-link">
+                    <i class="fa fa-home"></i> <span class='footer-text'>Accueil</span>
+                    </a>
+                    <a href="<?= $this->getUrl('connexion') ?>" class="footer-link">
+                    <i class="fa fa-connectdevelop"></i> <span class='footer-text'>Connexion</span>
+                    </a>
+                    <a href="<?= $this->getUrl('upload') ?>" class="footer-link">
+                    <i class="fa fa-file-upload"></i> <span class='footer-text'>Upload</span>
+                    </a>
+                </div>
+            </footer>
         </div><!-- Wrapper -->
         
         <!-- JQuery -->

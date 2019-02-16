@@ -2,7 +2,7 @@
 class ConnexionAction extends Action {
 
     /**
-     * Copier cette méthode
+     * Login form
      *
      * @param Request $request
      * @param Response $response
