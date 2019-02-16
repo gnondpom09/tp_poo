@@ -1,9 +1,7 @@
 <?php
-
-//formulaire de login 
 require('header.php');
 ?>
-
+//formulaire de login 
 <div class="container">
     <div class="grid-1 callout ">
         <form class="callout text-center" action="log.php" method="post">

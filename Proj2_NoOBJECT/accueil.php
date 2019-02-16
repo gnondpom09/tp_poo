@@ -10,7 +10,7 @@ require('header.php');
             </div>
             <div class="floated-label-wrapper">
                 <label for="type">Type</label>
-                <input type="text"  name="type" placeholder="Type">
+                <input type="text"  name="type" placeholder="Type" required>
             </div>
             <div class="floated-label-wrapper">
                 <label for="pass">Description</label>
