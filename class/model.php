@@ -22,17 +22,19 @@ class Model {
         $bdd = self::getBdd();
         // execute query
         $users = $bdd->prepare("SELECT * FROM users WHERE nom=? AND password=?");
-        $users->execute(array($identifiers));
+        $users->execute($identifiers);
 
         // Check if user exists
         if ($users->rowCount() == 1) {
             // Get properties of user find
-            $row = mysqli_fetch_assoc($users);
-            //$_SESSION['user_logged'] = $row['id'];
-            signIn($row['id']);
-            // redirect to home page
-            header('location:index.php');
-
+            while ($row = $users->fetch(PDO::FETCH_ASSOC)) {
+                // Set session of user logged
+                echo "success";
+                print_r($row);
+                self::signIn($row['id']);
+                // redirect to home page
+                header('location:index.php');
+            }
         } else {
             echo "Aucun utilisateur ne correspont aux identifiants : " . $identifiers;
         }
@@ -42,13 +44,6 @@ class Model {
         $currentSession = SessionSingleton::getInstance();
         $currentSession->set('user_logged', $userId);
         var_dump($currentSession->get());
-
-        // redirect to home page if user logged
-        if (isset($_SESSION['user_logged'])) {
-            header('location:index.php');
-        } else {
-            echo "Utilisateur inconnu";
-        }
     }
 
     /**
@@ -62,7 +57,7 @@ class Model {
         $bdd = self::getBdd();
         // execute query
         $media = $bdd->prepare("SELECT path where id=?");
-        $media->execute(array($idData));
+        $media->execute($idData);
 
         // Access to first result
         if ($media->rowCount() == 1) {
@@ -83,7 +78,7 @@ class Model {
         // execute query
         $media = $bdd->prepare("INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date)
         VALUES (?,?,?,?,?)");
-        $media->execute(array($values));
+        $media->execute($values);
 
         // Access to first result
         if ($media->rowCount() == 1) {
@@ -103,7 +98,7 @@ class Model {
          $bdd = self::getBdd();
          // execute query
          $media = $bdd->prepare("UPDATE datas SET description=? where id=?");
-         $media->execute(array($idData));
+         $media->execute($idData);
  
          // Access to first result
          if ($media->rowCount() == 1) {
