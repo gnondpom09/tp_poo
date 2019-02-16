@@ -2,25 +2,25 @@
     class UploadAction extends Action {
 
         /**
-         * Copier cette méthode
+         * Upload media in folder and path in database
          *
          * @param Request $request
          * @param Response $response
          * @return void
          */
         public function launch(Request $request, Response $response) {
-            // Instancie Model pour appliquer ses methodes CRUD
+            // Connect to database
             $model = new Model;
 
             if (isset($_FILES['fichier'])) { 
 
                 // file informations                
                 $image_file = $_FILES["fichier"]["name"];
-                $type  = $_FILES["fichier"]["type"]; //file name "txt_file" 
+                $type  = $_FILES["fichier"]["type"];
                 $size  = $_FILES["fichier"]["size"];
                 $temp  = $_FILES["fichier"]["tmp_name"];
 
-                // Type de fichier selectionné
+                // Type of file
                 $finfo = finfo_open(FILEINFO_MIME_TYPE); 
                 $mime = finfo_file($finfo, $temp);
 
@@ -30,11 +30,10 @@
                 if (!empty($image_file)) {
                     // check file not exist in your upload folder path
                     if (!file_exists($path)) {
-                        //check file size 5MB
+                        // Check file size 5MB
                         if ($size < 5000000) {
-                            // Move upload file temperory directory to your upload folder
+                            // Move upload file temperory directory to upload folder
                             if ($mime == 'image/jpg' || $mime == 'image/jpeg' || $mime == 'image/png') {
-                                //Its a doc format do something
                                 move_uploaded_file($temp, "multimedia/images/" . $image_file);
                             } else if ($mime == 'video/webm') {
                                 move_uploaded_file($temp, "multimedia/videos/" . $image_file);
@@ -50,27 +49,25 @@
                                     $date = date('d/m/Y');
                                     $values = [$path, $type, $description, 'toto', $date];
    
+                                    // Update datas
                                     $model->addData(array($values));
                                     $response->addVar('fichier', $values);
 
-                                    echo "Requête réussie";
                                 } else {
                                     echo "Veuillez remplir la description";
                                 }
-                            }
-                            
+                            }  
                         } else {
-                            echo "Your File To large Please Upload 5MB Size";
+                            echo "Le fichier dépasse 5MB, veuillez choisir un fichier moins gros";
                         }
                     } else { 
-                        echo "File Already Exists...Check Upload Folder";
+                        echo "Le fichier existe déjà";
                     }
                 } else {
-                    echo "Please Select Image";
+                    echo "Veuillez choisir un média";
                 }
                 finfo_close($finfo);
-            }
-              
+            }   
             
             // Display content of home page
             $this->render(dirname(dirname(__FILE__)) . '/views/upload.php');

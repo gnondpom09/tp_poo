@@ -20,8 +20,7 @@ class SessionSingleton {
      * "PHP Fatal error:  Call to protected SessionSingleton::__construct() from invalid context in .."
      *
      */
-    protected function __construct()
-    {
+    protected function __construct() {
         $this->arrValues = $_SESSION;
     }
     /**
@@ -34,8 +33,7 @@ class SessionSingleton {
      *
      * @return SessionSingleton
      */
-    public static function getInstance()
-    {
+    public static function getInstance() {
         if (static::$instance === null) {
             static::$instance = new static();
         }
@@ -51,8 +49,7 @@ class SessionSingleton {
      *
      * @return mixed
      */
-    public function get($propertyName = null)
-    {
+    public function get($propertyName = null) {
         if ($propertyName === null) {
             return $this->arrValues;
         }
@@ -69,8 +66,7 @@ class SessionSingleton {
      *
      * @return boolean
      */
-    public function set($propertyName, $propertyValue)
-    {
+    public function set($propertyName, $propertyValue) {
         $this->arrValues[$propertyName] = $propertyValue;
         return true;
     }
@@ -82,8 +78,7 @@ class SessionSingleton {
      *
      * @return boolean
      */
-    public function add($propertyName, $propertyValue)
-    {
+    public function add($propertyName, $propertyValue) {
         if (array_key_exists($propertyName, $this->arrValues)) {
             return false;
         }
