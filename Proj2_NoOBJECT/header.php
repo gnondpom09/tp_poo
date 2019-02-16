@@ -1,5 +1,6 @@
 <?php
 session_start ();
+require('deconnexion.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,4 +25,7 @@ session_start ();
                 <li><a href='login.php'>Connexion</a></li>
                 <li><a href='upload.php'>Upload</a></li>
             </ul>
+            <form action="deconnexion.php" method="post">
+            <input class="button expanded" type="submit" value="Deconnexion">
+            </form>
         </header>
