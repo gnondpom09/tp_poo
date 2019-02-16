@@ -1,5 +1,6 @@
 <?php
 require('upload.php');
+require('connexionbdd.php');
 //echo $_POST['Ajouter'];
 
 if (isset($_POST['ajouter'])) {
@@ -15,9 +16,9 @@ if (isset($_POST['ajouter'])) {
     //Les extensions acceptées pour les images
     $extensions_valides_img = array( 'jpg' , 'jpeg' , 'gif' , 'png', 'svg' );
     //Les extensions acceptées pour les images
-    $extensions_valides_audio = array('webm');
+    $extensions_valides_audio = array('ogg');
     //Les extensions acceptées pour les images
-    $extensions_valides_video = array('ogg');
+    $extensions_valides_video = array('webm');
     
     //récupération de l'extension du fichier sélectionné cf. documentation sur : http://php.net/manual/fr/function.pathinfo.php
     $path_parts = pathinfo($loaded_file);
@@ -26,13 +27,23 @@ if (isset($_POST['ajouter'])) {
     //Sélection du répertoire correspondant au type de fichier sélectionné
 
     if (in_array($extension, $extensions_valides_img)) { // si image
-        $path = './multimedia/images';
+        $path = 'multimedia/images/'.$loaded_file;
     } elseif (in_array($extension, $extensions_valides_audio)) { //si audio
-        $path = './multimedia/audio';
+        $path = 'multimedia/audio/'.$loaded_file;
     } elseif (in_array($extension, $extensions_valides_video)) { //si video
-        $path = './multimedia/videos';
+        $path = 'multimedia/videos/'.$loaded_file;
     }
     //déplacement du fichier dans le répertoire correspondant à son type
-    //$uploaded = move_uploaded_file($_FILES['fichier']['tmp_name'], $path);
+    $uploaded = move_uploaded_file($temp, $path);
     $uploaded = move_uploaded_file($loaded_file, $path);
+
+    $bdd->exec('INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date)
+VALUES ($path,$type,$_POST["description"],?,?)');
+
+echo 'Le jeu a bien été ajouté !';
 }
+
+
+// On ajoute une entrée
+
+?>
