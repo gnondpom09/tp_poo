@@ -68,7 +68,7 @@ class Model {
         $bdd = self::getBdd();
         // execute query
         $media = $bdd->prepare("SELECT path where id=?");
-        $media->execute($idData);
+        $media->execute(array($idData));
 
         // Access to first result
         if ($media->rowCount() == 1) {
@@ -104,12 +104,12 @@ class Model {
      * @param int $id : id of media
      * @return void
      */
-    function updateData($id) {
+    function updateData($id, $description) {
          // Get connection
          $bdd = self::getBdd();
          // execute query
          $media = $bdd->prepare("UPDATE datas SET description=? where id=?");
-         $media->execute($idData);
+         $media->execute(array($description, $idData));
  
          // Access to first result
          if ($media->rowCount() == 1) {
