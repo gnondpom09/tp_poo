@@ -17,85 +17,91 @@ class Model {
          return $db;
     }
 
-    // Exemple de requette read pour afficher tous les médias
     function readData() {
-        // // Get connection
-        $bdd = self::getBdd();
-        // Read datas
-        $datas = $bdd->prepare("SELECT * FROM datas");
-        $datas->execute();
-        return $datas;
+        // code
     }
 
-    // Exemple requette pour afficher un titre
+    /**
+     * Get media selected
+     *
+     * @param int $idData
+     * @return void
+     */
     function getData($idData) {
         // Get connection
-        $bdd = getBdd();
+        $bdd = self::getBdd();
         // execute query
-        $billet = $bdd->prepare('SELECT path where id=?');
-        $billet->execute(array($idData));
+        $media = $bdd->prepare('SELECT path where id=?');
+        $media->execute(array($idData));
 
-        // Accès à la première ligne de résultat
-        if ($billet->rowCount() == 1) {
-            return $billet->fetch(); 
+        // Access to first result
+        if ($media->rowCount() == 1) {
+            return $media->fetch(); 
         } else {
-            throw new Exception("Aucun média ne correspond à l'identifiant '$idData'");
+            throw new Exception("Aucun média ne correspond à l'identifiant" . $idData);
         }
     }
-    
+    /**
+     * Add new media
+     *
+     * @param int $values
+     * @return void
+     */
     function addData($values) {
-        // requette insert
         // Get connection
-        $bdd = getBdd();
+        $bdd = self::getBdd();
         // execute query
-        $billet = $bdd->prepare("INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date)
+        $media = $bdd->prepare("INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date)
         VALUES (?,?,?,?,?)");
-        $billet->execute(array($values));
+        $media->execute(array($values));
 
-        // Accès à la première ligne de résultat
-        if ($billet->rowCount() == 1) {
-            return $billet->fetch(); 
+        // Access to first result
+        if ($media->rowCount() == 1) {
+            return $media->fetch(); 
         } else {
             throw new Exception("Aucun média ....... " . $values);
         }
     }
-
+    /**
+     * update description of media
+     *
+     * @param [type] $id
+     * @return void
+     */
     function updateData($id) {
-        // requette update
          // Get connection
-         $bdd = getBdd();
+         $bdd = self::getBdd();
          // execute query
-         $billet = $bdd->prepare('UPDATE datas SET.............');
-         $billet->execute(array($idData));
+         $media = $bdd->prepare('UPDATE datas SET description=? where id=?');
+         $media->execute(array($idData));
  
          // Accès à la première ligne de résultat
-         if ($billet->rowCount() == 1) {
-             return $billet->fetch(); 
+         if ($media->rowCount() == 1) {
+             return $media->fetch(); 
          } else {
-             throw new Exception("Aucun média ....... '$idData'");
+             throw new Exception("Aucun média ......." . $idData);
          }
     }
-
+    /**
+     * Delete media selected
+     *
+     * @param [type] $id
+     * @return void
+     */
     function deleteData($id) {
         // requette delete
         // Get connection
-        $bdd = getBdd();
+        $bdd = self::getBdd();
         // execute query
-        $billet = $bdd->prepare('DELETE FROM datas............... ');
-        $billet->execute(array($idData));
+        $media = $bdd->prepare('DELETE FROM datas where id=?');
+        $media->execute(array($idData));
 
         // Accès à la première ligne de résultat
-        if ($billet->rowCount() == 1) {
-            return $billet->fetch(); 
+        if ($media->rowCount() == 1) {
+            return $media->fetch(); 
         } else {
-            throw new Exception("Aucun média ....... '$idData'");
+            throw new Exception("Aucun média ......." . $idData);
         }
     }
     
-    function dropData() {
-
-    }
-
-    
- 
 }
