@@ -24,7 +24,7 @@ class Model {
     /**
      * Get media selected
      *
-     * @param int $idData
+     * @param int $idData : id of media
      * @return void
      */
     function getData($idData) {
@@ -44,7 +44,7 @@ class Model {
     /**
      * Add new media
      *
-     * @param int $values
+     * @param int $values : properties of media
      * @return void
      */
     function addData($values) {
@@ -65,7 +65,7 @@ class Model {
     /**
      * update description of media
      *
-     * @param [type] $id
+     * @param int $id : id of media
      * @return void
      */
     function updateData($id) {
@@ -75,7 +75,7 @@ class Model {
          $media = $bdd->prepare('UPDATE datas SET description=? where id=?');
          $media->execute(array($idData));
  
-         // Accès à la première ligne de résultat
+         // Access to first result
          if ($media->rowCount() == 1) {
              return $media->fetch(); 
          } else {
@@ -85,18 +85,17 @@ class Model {
     /**
      * Delete media selected
      *
-     * @param [type] $id
+     * @param int $id : id of media
      * @return void
      */
     function deleteData($id) {
-        // requette delete
         // Get connection
         $bdd = self::getBdd();
         // execute query
         $media = $bdd->prepare('DELETE FROM datas where id=?');
         $media->execute(array($idData));
 
-        // Accès à la première ligne de résultat
+        // Access to first result
         if ($media->rowCount() == 1) {
             return $media->fetch(); 
         } else {
