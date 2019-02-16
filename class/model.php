@@ -4,7 +4,7 @@ class Model {
     /**
      * Get Connection to bdd
      *
-     * @return void
+     * @return void Connection to database
      */
     function getBdd() {
         $host = '127.0.0.1';
@@ -16,7 +16,12 @@ class Model {
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
          return $db;
     }
-
+    /**
+     * Check if user exists in database
+     *
+     * @param array $identifiers : fullname and password of user
+     * @return void
+     */
     function checkUser($identifiers) {
         // Get connection
         $bdd = self::getBdd();
@@ -37,6 +42,12 @@ class Model {
             echo "Aucun utilisateur ne correspont aux identifiants : " . $identifiers;
         }
     }
+    /**
+     * Connect user to application
+     *
+     * @param int $userId : id of user logged
+     * @return void
+     */
     function signIn($userId) {
         // Set current session
         $currentSession = SessionSingleton::getInstance();
