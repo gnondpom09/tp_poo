@@ -17,8 +17,38 @@ class Model {
          return $db;
     }
 
-    function readData() {
-        // code
+    function checkUser($identifiers) {
+        // Get connection
+        $bdd = self::getBdd();
+        // execute query
+        $users = $bdd->prepare("SELECT * FROM users WHERE nom=? AND password=?");
+        $users->execute(array($identifiers));
+
+        // Check if user exists
+        if ($users->rowCount() == 1) {
+            // Get properties of user find
+            $row = mysqli_fetch_assoc($users);
+            //$_SESSION['user_logged'] = $row['id'];
+            signIn($row['id']);
+            // redirect to home page
+            header('location:index.php');
+
+        } else {
+            echo "Aucun utilisateur ne correspont aux identifiants : " . $identifiers;
+        }
+    }
+    function signIn($userId) {
+        // Set current session
+        $currentSession = SessionSingleton::getInstance();
+        $currentSession->set('user_logged', $userId);
+        var_dump($currentSession->get());
+
+        // redirect to home page if user logged
+        if (isset($_SESSION['user_logged'])) {
+            header('location:index.php');
+        } else {
+            echo "Utilisateur inconnu";
+        }
     }
 
     /**
@@ -31,7 +61,7 @@ class Model {
         // Get connection
         $bdd = self::getBdd();
         // execute query
-        $media = $bdd->prepare('SELECT path where id=?');
+        $media = $bdd->prepare("SELECT path where id=?");
         $media->execute(array($idData));
 
         // Access to first result
@@ -72,7 +102,7 @@ class Model {
          // Get connection
          $bdd = self::getBdd();
          // execute query
-         $media = $bdd->prepare('UPDATE datas SET description=? where id=?');
+         $media = $bdd->prepare("UPDATE datas SET description=? where id=?");
          $media->execute(array($idData));
  
          // Access to first result
@@ -92,7 +122,7 @@ class Model {
         // Get connection
         $bdd = self::getBdd();
         // execute query
-        $media = $bdd->prepare('DELETE FROM datas where id=?');
+        $media = $bdd->prepare("DELETE FROM datas where id=?");
         $media->execute(array($idData));
 
         // Access to first result
