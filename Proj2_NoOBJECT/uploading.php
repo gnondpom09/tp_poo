@@ -4,7 +4,6 @@ require('connexionbdd.php');
 //echo $_POST['Ajouter'];
 
 if (isset($_POST['ajouter'])) {
-    
     $loaded_file = $_FILES["fichier"]["name"]; //Nom du fichier sélectionné
     echo $loaded_file;
     $type  = $_FILES["fichier"]["type"]; //Type du fichier sélectionné
