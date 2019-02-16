@@ -17,85 +17,120 @@ class Model {
          return $db;
     }
 
-    // Exemple de requette read pour afficher tous les médias
-    function readData() {
-        // // Get connection
-        $bdd = self::getBdd();
-        // Read datas
-        $datas = $bdd->prepare("SELECT * FROM datas");
-        $datas->execute();
-        return $datas;
-    }
-
-    // Exemple requette pour afficher un titre
-    function getData($idData) {
+    function checkUser($identifiers) {
         // Get connection
-        $bdd = getBdd();
+        $bdd = self::getBdd();
         // execute query
-        $billet = $bdd->prepare('SELECT path where id=?');
-        $billet->execute(array($idData));
+        $users = $bdd->prepare("SELECT * FROM users WHERE nom=? AND password=?");
+        $users->execute(array($identifiers));
 
-        // Accès à la première ligne de résultat
-        if ($billet->rowCount() == 1) {
-            return $billet->fetch(); 
+        // Check if user exists
+        if ($users->rowCount() == 1) {
+            // Get properties of user find
+            $row = mysqli_fetch_assoc($users);
+            //$_SESSION['user_logged'] = $row['id'];
+            signIn($row['id']);
+            // redirect to home page
+            header('location:index.php');
+
         } else {
-            throw new Exception("Aucun média ne correspond à l'identifiant '$idData'");
+            echo "Aucun utilisateur ne correspont aux identifiants : " . $identifiers;
         }
     }
-    
-    function addData($values) {
-        // requette insert
-        // Get connection
-        $bdd = getBdd();
-        // execute query
-        $billet = $bdd->prepare("INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date)
-        VALUES (?,?,?,?,?)");
-        $billet->execute(array($values));
+    function signIn($userId) {
+        // Set current session
+        $currentSession = SessionSingleton::getInstance();
+        $currentSession->set('user_logged', $userId);
+        var_dump($currentSession->get());
 
-        // Accès à la première ligne de résultat
-        if ($billet->rowCount() == 1) {
-            return $billet->fetch(); 
+        // redirect to home page if user logged
+        if (isset($_SESSION['user_logged'])) {
+            header('location:index.php');
+        } else {
+            echo "Utilisateur inconnu";
+        }
+    }
+
+    /**
+     * Get media selected
+     *
+     * @param int $idData : id of media
+     * @return void
+     */
+    function getData($idData) {
+        // Get connection
+        $bdd = self::getBdd();
+        // execute query
+        $media = $bdd->prepare("SELECT path where id=?");
+        $media->execute(array($idData));
+
+        // Access to first result
+        if ($media->rowCount() == 1) {
+            return $media->fetch(); 
+        } else {
+            throw new Exception("Aucun média ne correspond à l'identifiant" . $idData);
+        }
+    }
+    /**
+     * Add new media
+     *
+     * @param int $values : properties of media
+     * @return void
+     */
+    function addData($values) {
+        // Get connection
+        $bdd = self::getBdd();
+        // execute query
+        $media = $bdd->prepare("INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date)
+        VALUES (?,?,?,?,?)");
+        $media->execute(array($values));
+
+        // Access to first result
+        if ($media->rowCount() == 1) {
+            return $media->fetch(); 
         } else {
             throw new Exception("Aucun média ....... " . $values);
         }
     }
-
+    /**
+     * update description of media
+     *
+     * @param int $id : id of media
+     * @return void
+     */
     function updateData($id) {
-        // requette update
          // Get connection
-         $bdd = getBdd();
+         $bdd = self::getBdd();
          // execute query
-         $billet = $bdd->prepare('UPDATE datas SET.............');
-         $billet->execute(array($idData));
+         $media = $bdd->prepare("UPDATE datas SET description=? where id=?");
+         $media->execute(array($idData));
  
-         // Accès à la première ligne de résultat
-         if ($billet->rowCount() == 1) {
-             return $billet->fetch(); 
+         // Access to first result
+         if ($media->rowCount() == 1) {
+             return $media->fetch(); 
          } else {
-             throw new Exception("Aucun média ....... '$idData'");
+             throw new Exception("Aucun média ......." . $idData);
          }
     }
-
+    /**
+     * Delete media selected
+     *
+     * @param int $id : id of media
+     * @return void
+     */
     function deleteData($id) {
-        // requette delete
         // Get connection
-        $bdd = getBdd();
+        $bdd = self::getBdd();
         // execute query
-        $billet = $bdd->prepare('DELETE FROM datas............... ');
-        $billet->execute(array($idData));
+        $media = $bdd->prepare("DELETE FROM datas where id=?");
+        $media->execute(array($idData));
 
-        // Accès à la première ligne de résultat
-        if ($billet->rowCount() == 1) {
-            return $billet->fetch(); 
+        // Access to first result
+        if ($media->rowCount() == 1) {
+            return $media->fetch(); 
         } else {
-            throw new Exception("Aucun média ....... '$idData'");
+            throw new Exception("Aucun média ......." . $idData);
         }
     }
     
-    function dropData() {
-
-    }
-
-    
- 
 }

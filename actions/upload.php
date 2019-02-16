@@ -14,8 +14,7 @@
 
             if (isset($_FILES['fichier'])) { 
 
-                // file informations
-                $name = $_REQUEST['fichier']; //textbox name "txt_name"                    
+                // file informations                
                 $image_file = $_FILES["fichier"]["name"];
                 $type  = $_FILES["fichier"]["type"]; //file name "txt_file" 
                 $size  = $_FILES["fichier"]["size"];
@@ -33,7 +32,7 @@
                     if (!file_exists($path)) {
                         //check file size 5MB
                         if ($size < 5000000) {
-                            //move upload file temperory directory to your upload folder
+                            // Move upload file temperory directory to your upload folder
                             if ($mime == 'image/jpg' || $mime == 'image/jpeg' || $mime == 'image/png') {
                                 //Its a doc format do something
                                 move_uploaded_file($temp, "multimedia/images/" . $image_file);
@@ -42,12 +41,13 @@
                             } else if ($mime == 'audio/mpeg') {
                                 move_uploaded_file($temp, "multimedia/audio/" . $image_file);
                             }
+                            // Update database when click validate form
                             if (isset($_POST['ajouter'])) {
                                 // Check if description is not empty
                                 if (isset($_POST['description'])) {
                                     // push properties of file in array
-                                    $description = htmlspecialchar($_POST['description']);
-                                    $date = new Date();
+                                    $description = htmlspecialchars($_POST['description']);
+                                    $date = date('d/m/Y');
                                     $values = [$path, $type, $description, 'toto', $date];
    
                                     $model->addData(array($values));
@@ -60,11 +60,9 @@
                             }
                             
                         } else {
-                            //error message file size not large than 5MB
                             echo "Your File To large Please Upload 5MB Size";
                         }
                     } else { 
-                        //error message file not exists your upload folder path
                         echo "File Already Exists...Check Upload Folder";
                     }
                 } else {

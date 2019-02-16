@@ -13,8 +13,8 @@ class indexAction extends Action {
     public function launch(Request $request, Response $response) {
         // get values to display
         $model = new Model;
-        $values = $model->readData();
-        $response->addVar('values', $values);
+        // $values = $model->readData();
+        // $response->addVar('values', $values);
         //$response->addVar('params', $this->_controller->getParams());
         
         // Display content of home page

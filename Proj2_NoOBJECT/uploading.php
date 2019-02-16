@@ -6,11 +6,11 @@ require('connexionbdd.php');
 if (isset($_POST['ajouter'])) {
     
     $loaded_file = $_FILES["fichier"]["name"]; //Nom du fichier sélectionné
-    echo $loaded_file;
+    //echo $loaded_file;
     $type  = $_FILES["fichier"]["type"]; //Type du fichier sélectionné
-    echo  "<br/>".$type;
+    //echo  "<br/>".$type;
     $size  = $_FILES["fichier"]["size"]; //Taille du fichier
-    echo  "<br/>".$size;
+    //echo  "<br/>".$size;
     $error = $_FILES["fichier"]["error"];  //Le code d'erreur, qui permet de savoir si le fichier a bien été uploadé.
     $temp  = $_FILES["fichier"]["tmp_name"];
     //Les extensions acceptées pour les images
