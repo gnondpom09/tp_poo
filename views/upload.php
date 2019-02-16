@@ -1,7 +1,11 @@
 <!-- formulaire de  -->
 
 
+<<<<<<< HEAD
+        <form class="callout text-center" enctype="multipart/form-data" action="upload.php?action=test">
+=======
         <form class="callout text-center" method="post" enctype="multipart/form-data" action="#">
+>>>>>>> b49e1af2203183ebe02bb44fdb85e30b2ce95896
             <div class="floated-label-wrapper">
                 <label for="Fichier">Fichier</label>
                 <input type="file" id="fichier" name="fichier" placeholder="Fichier">
