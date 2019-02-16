@@ -1,15 +1,15 @@
 <?php
 require('upload.php');
 require('connexionbdd.php');
-//echo $_POST['Ajouter'];
+require('login.php');
 
-if (isset($_POST['ajouter'])) {
+if (isset($_POST['ajouter'])) { //si login OK et fichier sélectionné
     $loaded_file = $_FILES["fichier"]["name"]; //Nom du fichier sélectionné
-    echo $loaded_file;
+    //echo $loaded_file;
     $type  = $_FILES["fichier"]["type"]; //Type du fichier sélectionné
-    echo  "<br/>".$type;
+   // echo  "<br/>".$type;
     $size  = $_FILES["fichier"]["size"]; //Taille du fichier
-    echo  "<br/>".$size;
+    //echo  "<br/>".$size;
     $error = $_FILES["fichier"]["error"];  //Le code d'erreur, qui permet de savoir si le fichier a bien été uploadé.
     $temp  = $_FILES["fichier"]["tmp_name"];
     //Les extensions acceptées pour les images
@@ -35,9 +35,11 @@ if (isset($_POST['ajouter'])) {
     //déplacement du fichier dans le répertoire correspondant à son type
     $uploaded = move_uploaded_file($temp, $path);
     $uploaded = move_uploaded_file($loaded_file, $path);
-
-    $bdd->exec('INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date)
-VALUES ($path,$type,$_POST["description"],?,?)');
-
-echo 'le fichier est bien chargé';
+    $description=htmlspecialchars($_POST["description"]);
+    $date = date("F j, Y, g:i a"); //date de upload
+    //Requete qui récupère l'identifiant $id correspondant au login/nom dans la bdd pour renseigner la clé étrangère auteur_id
+    $id = $bdd->exec('SELECT users.id FROM users,datas where users.id=datas.auteur_id and users.nom="nom1"');
+    //Requete pour insérer dans la base de données les renseignements du fichier uploadé
+    $bdd->exec('INSERT INTO datas(chemin_relatif, mime_type, description, auteur_id, date) VALUES ($path,$type,$description,$id,$date)');
+    echo 'le fichier est bien chargé dans la bdd';
 }
