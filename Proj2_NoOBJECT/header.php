@@ -1,6 +1,6 @@
 <?php
-session_start ();
-require('deconnexion.php');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +26,6 @@ require('deconnexion.php');
                 <li><a href='upload.php'>Upload</a></li>
             </ul>
             <form action="deconnexion.php" method="post">
-            <input class="button expanded" type="submit" value="Deconnexion">
+            <input class="button" type="submit" value="Deconnexion">
             </form>
         </header>
