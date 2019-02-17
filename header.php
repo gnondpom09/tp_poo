@@ -1,3 +1,12 @@
+<?php
+//session_start();
+
+// logout
+if (!empty($_POST['logout'])) {
+    $model = new Model;
+    $model->logout();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +27,32 @@
             <h1 class="subnav-hero-headline">MULTIMEDIA</h1>
             <ul class="subnav-hero-subnav">
                 <li><a href="<?= $this->getUrl('index') ?>"><i class="fa fa-home"></i> Accueil</a></li>
-                <li><a href="<?= $this->getUrl('connexion') ?>"><i class="fa fa-connectdevelop"></i> Connexion</a></li>
+                <?php
+                $currentSession = SessionSingleton::getInstance();
+                // var_dump($currentSession->get());
+                if ($currentSession) :
+                    // debug
+                    foreach ($currentSession as $key => $value) {
+                        echo $key . " - " . $value;
+                    }
+                    $logged = $currentSession->get();
+                ?>
+                    <li>
+                        <a href="<?= $this->getUrl('connexion') ?>">
+                            <i class="fa fa-connectdevelop"></i> Connexion
+                        </a>
+                    </li>
+                <?php    
+                else :
+                ?>
+                    <li>
+                        <a href="#"><i class="fa fa-connectdevelop"></i>
+                        <input type="submit" name="logout" value="Deconnexion">
+                        </a>
+                    </li>
+                <?php
+                endif; 
+                ?>
                 <li><a href="<?= $this->getUrl('upload') ?>"><i class="fa fa-file-upload"></i> Upload</a></li>
             </ul>
         </header>

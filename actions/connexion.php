@@ -9,26 +9,23 @@ class ConnexionAction extends Action {
      * @return void
      */
     public function launch(Request $request, Response $response) {
-        // Instancie Model pour appliquer ses methodes CRUD
+        // Get connection to database
         $model = new Model;
         // validate login
         if (isset($_POST)) {
             if (!empty($_POST['fullname']) && !empty($_POST['password'])) {
-
-                // Set current session
+                // Get fields values
                 $fullname = htmlspecialchars($_POST['fullname']);
                 $password = htmlspecialchars($_POST['password']);
-                $identifiers = [$fullname, $password];
-                $model = new Model();
 
                 // Check if user exists and set session
-                $model->checkUser($identifiers);
+                $model->signIn($fullname, $password);
             } else {
                 // set error message
             }
         }
         
-        // Display content of home page
+        // Display content of login page
         $this->render(dirname(dirname(__FILE__)) . '/views/connexion.php'); // modifier la page à afficher
         $this->printOut();
     }
