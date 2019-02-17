@@ -14,11 +14,11 @@
 <body>
     <div class="wrapper">
    
-       <header class="subnav-hero-section site-header">
-                <h1 class="subnav-hero-headline">MULTIMEDIA</h1>
-                <ul class="subnav-hero-subnav">
-                    <li><a href="<?= $this->getUrl('index') ?>"><i class="fa fa-home"></i> Accueil</a></li>
-                    <li><a href="<?= $this->getUrl('connexion') ?>"><i class="fa fa-connectdevelop"></i> Connexion</a></li>
-                    <li><a href="<?= $this->getUrl('upload') ?>"><i class="fa fa-file-upload"></i> Upload</a></li>
-                </ul>
-            </header>
+        <header class="subnav-hero-section site-header">
+            <h1 class="subnav-hero-headline">MULTIMEDIA</h1>
+            <ul class="subnav-hero-subnav">
+                <li><a href="<?= $this->getUrl('index') ?>"><i class="fa fa-home"></i> Accueil</a></li>
+                <li><a href="<?= $this->getUrl('connexion') ?>"><i class="fa fa-connectdevelop"></i> Connexion</a></li>
+                <li><a href="<?= $this->getUrl('upload') ?>"><i class="fa fa-file-upload"></i> Upload</a></li>
+            </ul>
+        </header>

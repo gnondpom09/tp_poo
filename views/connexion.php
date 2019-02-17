@@ -10,4 +10,8 @@
                 <input type="password" id="password" name="password" placeholder="Mot de passe">
             </div>
             <input class="button expanded" name="login" type="submit" value="Valider">
+            <p>
+                Pas encore inscrit ? 
+                <a href="<?= $this->getUrl('signup') ?>"> Enregistrez vous</a>
+            </p>
         </form>
