@@ -63,6 +63,13 @@ class Model {
             echo "Utilisateur inconnu";
         }
     }
+    /**
+     * Save new user in database and connect to application
+     *
+     * @param string $fullname
+     * @param string $password
+     * @return void
+     */
     function signUp(string $fullname, string $password) {
         // Get connection
         $bdd = self::getBdd();
@@ -81,6 +88,11 @@ class Model {
             echo "Il existe deja un compte avec ce pseudo";
         }
     }
+    /**
+     * Logout
+     *
+     * @return void
+     */
     function logout() {
         // Unset current session
         $currentSession = SessionSingleton::getInstance();

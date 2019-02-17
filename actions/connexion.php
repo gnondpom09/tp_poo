@@ -25,7 +25,7 @@ class ConnexionAction extends Action {
             }
         }
         
-        // Display content of home page
+        // Display content of login page
         $this->render(dirname(dirname(__FILE__)) . '/views/connexion.php'); // modifier la page à afficher
         $this->printOut();
     }
