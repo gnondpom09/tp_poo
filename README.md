@@ -13,10 +13,11 @@
 * npm i -g sass (si nodejs installé)
 ## Outils de gestion de projet
 * https://www.notion.so/
-* https://slack.com
-#### Base de données 
+#### Base de données - class/model.php
 * Adresse : localhost
-* Nom de la base : projet1
+* Nom de la base : multimedia
+* username : root
+* password : 1234512345
 ## Modifications
 ##### Travail sur le style
 * Se placer dans la racine du projet

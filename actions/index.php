@@ -1,10 +1,8 @@
 <?php
-class indexAction extends Action {
-    // Properties
-    public $file = 'tmp/stored_datas.txt';
-    
+class IndexAction extends Action {
+
     /**
-     * Display list of items if not empty
+     * Get media selected
      *
      * @param Request $request
      * @param Response $response
@@ -13,10 +11,10 @@ class indexAction extends Action {
     public function launch(Request $request, Response $response) {
         // get values to display
         $model = new Model;
-        // $values = $model->readData();
-        // $response->addVar('values', $values);
-        //$response->addVar('params', $this->_controller->getParams());
-        
+        // Query to get medias
+        // Display media selected
+        // code...
+
         // Display content of home page
         $this->render(dirname(dirname(__FILE__)) . '/views/index.php');
         $this->printOut();
