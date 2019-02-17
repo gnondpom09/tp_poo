@@ -1,6 +1,5 @@
 <?php
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,10 +21,12 @@
             <h1 class="subnav-hero-headline">MULTIMEDIA</h1>
             <ul class="subnav-hero-subnav">
                 <li><a href='accueil.php'>Accueil</a></li>
-                <li><a href='login.php'>Connexion</a></li>
-                <li><a href='upload.php'>Upload</a></li>
+                <!-- <li><a href='login.php'>Connexion</a></li> -->
+               <li><a href='login.php'>Upload</a></li>
             </ul>
             <form action="deconnexion.php" method="post">
+            <div class="grid-2 colums-small-6 "> 
             <input class="button" type="submit" value="Deconnexion">
+            </div>
             </form>
         </header>

@@ -6,10 +6,6 @@ spl_autoload_register(function($class) {
 
 // Start session
 session_start();
-// $currentSession = SessionSingleton::getInstance();
-// $currentSession->set('admin', 1);
-// var_dump($currentSession->get());
-
  
 try {
     $front = FrontController::getInstance()->dispatch();

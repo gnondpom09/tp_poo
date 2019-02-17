@@ -1,12 +1,19 @@
 <?php
 //formulaire de upload
+session_start();
 require('header.php');
+//require('recuperationId.php');
+//$nom=$_POST['login'];
+$nom='toi';
 ?>
 
-<form action='uploading.php' method= 'post' class="callout text-center" enctype="multipart/form-data">
+<p class="floated-label-wrapper"> Bienvenue <?php echo $nom ?></p>
+<form action="uploading.php" method= "post" class="callout text-center" enctype="multipart/form-data">
+         
          <div class="floated-label-wrapper">
+            
              <label for="Fichier">Fichier</label>
-            <input type="file" name="fichier" accept=".ogg" value="fichier" placeholder="Fichier">
+            <input type="file" name="fichier"  value="fichier" placeholder="Fichier">
          </div>
          <div class="floated-label-wrapper">
             <label for="description">Description</label>
@@ -15,6 +22,7 @@ require('header.php');
             <input class="button expanded" type="submit" value="ajouter" name="ajouter">
 </form>
 <div class="floated-label-wrapper"> </div>
+       
 <?php
-        require('footer.php');
-?>
+ require('footer.php');
+ ?>
