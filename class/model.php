@@ -81,11 +81,14 @@ class Model {
             echo "Il existe deja un compte avec ce pseudo";
         }
     }
-    function logout(int $userId) {
+    function logout() {
         // Unset current session
         $currentSession = SessionSingleton::getInstance();
         $currentSession->set('user_logged', 0);
         var_dump($currentSession->get());
+
+        // redirect to hopme page
+        header('location:index.php');
     }
     /**
      * Get media selected
