@@ -8,7 +8,8 @@
 
 .subnav-hero-section {
   text-align: center;
-  background-color: #9c6bb3;
+  /*background-color: #9c6bb3;*/
+  background-image: url(../multimedia/images/bookshelf-413705_1280.jpg);
   background-size: cover;
   position: relative;
   overflow: visible;
@@ -18,8 +19,17 @@
   justify-content: center;
   height: 300px;
   margin-bottom: 48px; }
-  .subnav-hero-section .subnav-hero-headline {
+.subnav-hero-section .subnav-hero-headline {
     color: #ffffff; }
+
+.deco {
+  position: absolute;
+  top:0;
+  right: 0;
+}
+  .button {
+    background-color: darkgrey;
+  }
 
 .subnav-hero-subnav {
   float: none;
@@ -33,7 +43,7 @@
     display: inline-block; }
     .subnav-hero-subnav li a {
       padding: 0.9rem 1rem;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       color: #ffffff;
       text-transform: uppercase;
       display: block;
@@ -48,6 +58,8 @@
 /*accueil*/
 .container {
   display: grid;
+  align-items: flex-start;
+  justify-content: center;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(4, 1fr);
   width: 100vw;
@@ -59,7 +71,8 @@
 .grid-1 {
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-row: 1; }
+  grid-row: 1;
+  }
   @media screen and (max-width: 60em) {
     .grid-1 {
       grid-column-start: 1;
@@ -67,6 +80,7 @@
       grid-row: 1; } }
 
 .grid-2 {
+  
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row: 1; }
@@ -82,7 +96,7 @@
 footer {
   margin-top: 48px;
   padding: 20px;
-  background-color: #9c6bb3;
+  background-color: darkgrey;
   color: #ffffff;
   display: block;
   width: 100%;
