@@ -6,7 +6,7 @@ require('header.php');
 <form action='uploading.php' method= 'post' class="callout text-center" enctype="multipart/form-data">
          <div class="floated-label-wrapper">
              <label for="Fichier">Fichier</label>
-            <input type="file" name="fichier" accept=".ogg" value="fichier" placeholder="Fichier">
+            <input type="file" name="fichier" value="fichier" placeholder="Fichier">
          </div>
          <div class="floated-label-wrapper">
             <label for="description">Description</label>
