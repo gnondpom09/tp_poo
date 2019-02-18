@@ -47,12 +47,16 @@ if (!empty($_POST['logout'])) {
                 ?>
                     <li>
                         <a href="#"><i class="fa fa-connectdevelop"></i>
-                        <input type="submit" name="logout" value="Deconnexion">
+                            <input type="submit" name="logout" value="Deconnexion">
                         </a>
                     </li>
                 <?php
                 endif; 
                 ?>
-                <li><a href="<?= $this->getUrl('upload') ?>"><i class="fa fa-file-upload"></i> Upload</a></li>
+                <li>
+                    <a href="<?= $this->getUrl('upload') ?>">
+                        <i class="fa fa-file-upload"></i> Upload
+                    </a>
+                </li>
             </ul>
         </header>
