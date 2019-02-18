@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('header.php');
+require('../controleur/controleurLogin.php');
 $nom= $_SESSION['login'];
 if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
    echo '
