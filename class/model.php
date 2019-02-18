@@ -16,7 +16,7 @@ class Model {
         // Connection to database
         $db = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password, 
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-         return $db;
+        return $db;
     }
     /**
      * Check if user exists in database
