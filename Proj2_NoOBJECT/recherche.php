@@ -4,30 +4,32 @@ require('connexionbdd.php');
 
 
 $type=$_POST['type'];
-$nom=htmlspecialchars($_POST['nom']);
+//$nom=htmlspecialchars($_POST['nom']);
 $description=htmlspecialchars($_POST['description']);
 
-function getPath($type, $description, $nom=null)
-{
+
 
         //si le nom n'est pas saisi dans le formulaire (formulaire de la page d'accueil)
-        if (!isset($nom)) {
+        //if (empty($nom)) {
             //récupérer le chemin relatif du/des fichier(s) correspondant(s) au type et description saisis
-            $chemin = $bdd->query("SELECT datas.chemin_relatif FROM datas where datas.type='$type' and datas.description='$description'");
-        } else {
-            $chemin = $bdd->query("SELECT datas.chemin_relatif FROM datas,users where datas.auteur_id = users.id and datas.mime_type='$type' and datas.description='$description' and users.nom='$nom'");
-        }
-        return $chemin;
-    
-}
+            $rep = $bdd->query("SELECT datas.chemin_relatif FROM datas where datas.mime_type='$type' and datas.description='$description'");
+            //echo $rep;
+           
+       // } else {
+        //    $rep = $bdd->query("SELECT datas.chemin_relatif FROM datas,users where datas.auteur_id = users.id and datas.mime_type='$type' and datas.description='$description' and users.nom='$nom'");
 
-if (isset($type) && isset($description)) {
-    getPath($type, $description, $nom=null);
-    $chemin=getPath($type, $description, $nom=null);
+       // }
+        $chemin = $rep->fetch();
+        echo "le chemin est : ".$chemin;
+
+if (!empty($type) && !empty($description)) {
+   
     if ($chemin) { 
+        echo $chemin;
         if ($type=='image') {
             //afficher le contenu
             $media= "<img src=\"$chemin\" alt=\"$description\">";
+            echo $media;
         } else if ($type=='video') {
             $media= " <video controls width=\"250\">
                     <source src=\"$chemin\" type=\"video/webm\">

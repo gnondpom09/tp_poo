@@ -3,8 +3,8 @@
 session_start();
 require('header.php');
 //require('recuperationId.php');
-//$nom=$_POST['login'];
-$nom='toi';
+$nom=$_SESSION['login'];
+//$nom='toi';
 ?>
 
 <p class="floated-label-wrapper"> Bienvenue <?php echo $nom ?></p>

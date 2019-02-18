@@ -27,8 +27,8 @@
             
             <ul class="subnav-hero-subnav">
                 <li><a href='index.php'>Accueil</a></li>
-                <!-- <li><a href='login.php'>Connexion</a></li> -->
-               <li><a href='login.php'>Upload</a></li>
+                <li><a href='login.php'>Connexion</a></li>
+               <li><a href='upload.php'>Upload</a></li>
             </ul>
             
         </header>

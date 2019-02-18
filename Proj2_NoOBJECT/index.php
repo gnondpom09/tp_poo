@@ -1,10 +1,11 @@
 <?php
-session_start ();
+//session_start ();
 require('header.php');
+
 ?>
 <div class="container">
     <div class="grid-1 callout colums-small-6">
-        <form class="callout text-center">
+        <form class="callout text-center" enctype="multipart/form-data"  action="recherche.php" method= "post">
             <div class="floated-label-wrapper">
                 <label for="Auteur">Auteur</label>
                 <input type="text"  name="auteur" placeholder="Auteur">
@@ -23,7 +24,11 @@ require('header.php');
 
     <div class="grid-2 callout colums-small-6">
     Affichage du média
-    </div>
+    <?php 
+     //echo $media
+     //printf ("recherche.php?media=".$media); ?>
+    
+     </div>
 
 </div>
 <?php
