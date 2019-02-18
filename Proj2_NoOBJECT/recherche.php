@@ -3,7 +3,7 @@ require('index.php');
 require('connexionbdd.php');
 
 
-$type=$_POST['type'];
+$type=htmlspecialchars($_POST['type']);
 //$nom=htmlspecialchars($_POST['nom']);
 $description=htmlspecialchars($_POST['description']);
 
