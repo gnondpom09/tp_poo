@@ -50,7 +50,7 @@
                                     $values = [$path, $type, $description, 'toto', $date];
    
                                     // Update datas
-                                    $model->addData(array($values));
+                                    $model->addData($values);
                                     $response->addVar('fichier', $values);
 
                                 } else {
