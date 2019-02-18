@@ -26,7 +26,7 @@
             <h1 class="subnav-hero-headline">MULTIMEDIA</h1>
             
             <ul class="subnav-hero-subnav">
-                <li><a href='accueil.php'>Accueil</a></li>
+                <li><a href='index.php'>Accueil</a></li>
                 <!-- <li><a href='login.php'>Connexion</a></li> -->
                <li><a href='login.php'>Upload</a></li>
             </ul>

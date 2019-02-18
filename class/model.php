@@ -21,8 +21,8 @@ class Model {
     /**
      * Check if user exists in database
      *
-     * @param array $identifiers : fullname and password of user
-     * @return void
+     * @param string $fullname username of user
+     * @return integer Id of user in database
      */
     function checkUser(string $fullname): int {
         // Get connection
@@ -45,7 +45,8 @@ class Model {
     /**
      * Connect user to application
      *
-     * @param int $userId : id of user logged
+     * @param string $fullname
+     * @param string $password
      * @return void
      */
     function signIn(string $fullname, string $password) {
@@ -126,7 +127,7 @@ class Model {
     /**
      * Add new media
      *
-     * @param int $values : properties of media
+     * @param array $values : properties of media
      * @return void
      */
     function addData(array $values) {
@@ -149,6 +150,7 @@ class Model {
      * update description of media
      *
      * @param int $id : id of media
+     * @param string $description : description of media
      * @return void
      */
     function updateData(int $id, string $description) {
