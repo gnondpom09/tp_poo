@@ -4,7 +4,7 @@ require('header.php');
 require('../controleur/controleurLogin.php');
 $nom= $_SESSION['login'];
 if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
-   echo '
+   ?>
    <p class="floated-label-wrapper"> Bienvenue <?php echo $nom ?></p>
    <form action="/projet_php2/controleur/controleurUpload.php" method= "post" class="callout text-center" enctype="multipart/form-data">
             
@@ -19,7 +19,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
             </div>
                <input class="button expanded" type="submit" value="ajouter" name="ajouter">
    </form>
-   <div class="floated-label-wrapper"> </div>';
+   <div class="floated-label-wrapper"> </div>
+   <?php
 } else {
    echo "Vous devez vous identifiez pour charger des fichiers";
 }
@@ -27,5 +28,5 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
                    
        
 <?php
- require('footer.php');
+ require('../../footer.php');
  ?>

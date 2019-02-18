@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('header.php');
-//require('controleur/controleurAccueil.php');
+require('controleur/controleurAccueil.php');
 ?>
 <div class="container">
     <div class="grid-1 callout colums-small-6">
@@ -35,5 +35,5 @@ require('header.php');
 
 </div>
 <?php
-require('footer.php');
+require('../../footer.php');
 ?>

@@ -21,9 +21,5 @@ require('header.php');
     </div>
 </div>
 <?php
-<<<<<<< HEAD
-//require('footer.php');
-=======
-require('../vue/footer.php');
->>>>>>> ddae5b93aaf03b9ad001289f3face636ce8cbbd2
+require('../../footer.php');
 ?>

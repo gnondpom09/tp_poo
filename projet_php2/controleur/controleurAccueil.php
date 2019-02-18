@@ -1,6 +1,6 @@
 <?php
 require('../modele/modele.php');
-require('../vue/viewAccueil.php');
+// require('../vue/viewAccueil.php');
 //require('../vue/viewLogin.php');
 require('../controleur/connexionDB.php');
 

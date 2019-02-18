@@ -62,15 +62,19 @@ function moveFileToDir($post, $file, $dir)
 /**
  * Connexion à la base de données
  */
-
+/**
+ * Undocumented function
+ *
+ * @param [type] $host
+ * @param [type] $dbname
+ * @param [type] $usr
+ * @param [type] $pwd
+ * @return void
+ */
 function connectDB($host, $dbname, $usr, $pwd)
 { //connexion  à la base de données
     try {
-        $bdd = new PDO(
-            'mysql:host=$host;dbname=$dbname;charset=utf8',
-            "$usr",
-            "$pwd"
-        );
+        $bdd = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $usr, $pwd);
         return true;
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
