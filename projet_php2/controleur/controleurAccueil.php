@@ -1,8 +1,8 @@
 <?php
-require('modele/modele.php');
-require('vue/viewAccueil.php');
-require('vue/viewLogin.php');
-require('connexionDB.php');
+require('../modele/modele.php');
+require('../vue/viewAccueil.php');
+//require('../vue/viewLogin.php');
+require('../controleur/connexionDB.php');
 
 $type=$_POST['type'];
 $nom=htmlspecialchars($_POST['nom']);

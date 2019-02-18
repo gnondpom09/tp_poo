@@ -28,6 +28,7 @@ function moveFileToDir($post, $file, $dir)
         //récupération de l'extension du fichier sélectionné cf. documentation sur : http://php.net/manual/fr/function.pathinfo.php
         $path_parts = pathinfo($loaded_file_name);
         $extension = $path_parts['extension'];
+        $extension = strtolower($extension);
     
         //Sélection du répertoire correspondant au type de fichier sélectionné
     
@@ -36,6 +37,7 @@ function moveFileToDir($post, $file, $dir)
         } else {
             echo'Le type de fichier n\'est pas supporté <br/> Veuillez choisir une image au format jpeg , gif ,png, svg.';
         }
+       
         if (in_array($extension, $extensions_valides_audio)) { //si audio
             $path = $dir.'audio/'.$loaded_file_name;
         } else {
@@ -55,7 +57,7 @@ function moveFileToDir($post, $file, $dir)
     // $retour[1]=$mime_type;
     //return $retour;
     //
-    return array($chemin_relatif, $mime_type);
+    return array($path, $type);
 }
 /**
  * Connexion à la base de données
@@ -118,6 +120,23 @@ function insertMediaToDB($nom, $chemin_relatif, $mime_type, $description, $date,
         if ($reponse_req) { //si écriture dans la base de données
             echo 'le fichier est bien chargé dans la base de données';
         }
+    } else {
+        echo 'Connexion à la base de données requise';
+    }
+}
+function checkLog($login, $pwd, $connect)
+{
+    if ($connect) {
+        $exc= execute('SELECT COUNT(*) as nb FROM id WHERE login = "$login" and password = "$pwd"');
+        $row = $exec -> fetch();
+       if ($row['nb'] === 0) 
+        {
+        echo "Vous n'êtes pas inscrit !";
+        }
+        else {
+           session_start();
+           echo "identifié avec succès";
+        } 
     } else {
         echo 'Connexion à la base de données requise';
     }

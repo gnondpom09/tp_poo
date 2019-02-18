@@ -5,7 +5,7 @@ require('header.php');
 <!-- formulaire de login  -->
 <div class="container">
     <div class="grid-1 callout ">
-        <form class="callout text-center" action="" method="post">
+        <form class="callout text-center" action="viewUpload.php" method="post">
             <p> Veuillez vous identifier pour charger des médias</p>
          <div class="floated-label-wrapper">
              <label for="login">Login</label> <!-- correspond à 'nom' dans la bdd -->

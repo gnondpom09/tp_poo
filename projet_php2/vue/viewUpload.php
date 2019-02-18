@@ -1,12 +1,11 @@
 <?php
-//session_start();
+session_start();
 require('header.php');
-//require('recuperationId.php');
-//$nom=$_POST['login'];
-$nom='toi';
+$nom= $_SESSION['login'];
+
 ?>
                      <!-- formulaire d'Upload -->
-<p class="floated-label-wrapper"> Bienvenue <?php //echo $nom ?></p>
+<p class="floated-label-wrapper"> Bienvenue <?php echo $nom ?></p>
 <form action="/projet_php2/controleur/controleurUpload.php" method= "post" class="callout text-center" enctype="multipart/form-data">
          
          <div class="floated-label-wrapper">
